@@ -14,7 +14,7 @@ TICKET_TEMPLATE = """
 ^FO110,200^FDSe li ha assignat el torn: ^FS
 
 ^CF0,90
-^FO200,280^FDT20^FS
+^FO200,280^FDT%s^FS
 
 ^CI20
 ^CF0,40

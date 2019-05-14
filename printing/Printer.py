@@ -13,4 +13,4 @@ class Printer(object):
         )
 
     def print_ticket(self, num):
-        self.z_printer.output(Constants.TICKET_TEMPLATE % 'Ticket ' + num)
+        self.z_printer.output(Constants.TICKET_TEMPLATE % num)

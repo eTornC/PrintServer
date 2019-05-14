@@ -22,6 +22,8 @@
 
 import os.path
 import sys
+import shlex
+
 
 if sys.platform.lower().startswith('win'):
     IS_WINDOWS = True
@@ -39,12 +41,19 @@ class zebra(object):
         self.queue = queue
 
     def _output_unix(self, commands):
-        if self.queue == 'zebra_python_unittest':
+        """if self.queue == 'zebra_python_unittest':
             p = subprocess.Popen(['cat','-'], stdin=subprocess.PIPE)
         else:
             p = subprocess.Popen(['lpr','-P{}'.format(self.queue),'-oraw'], stdin=subprocess.PIPE)
-        p.communicate(commands)
-        p.stdin.close()
+        """
+        code = commands.decode("utf-8") 
+       
+        print(type(code))
+        p = subprocess.Popen(['echo "'+ code +'" >Tiquet.txt'], shell=True)
+        p = subprocess.Popen(['cp Tiquet.txt /dev/usb/lp0'], shell=True)
+
+        p.communicate()
+        #p.stdin.close()
 
     def _output_win(self, commands):
         if self.queue == 'zebra_python_unittest':
