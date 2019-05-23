@@ -12,5 +12,5 @@ class Printer(object):
             label_width=800
         )
 
-    def print_ticket(self, num):
-        self.z_printer.output(Constants.TICKET_TEMPLATE % num)
+    def print_ticket(self, turn, num):
+        self.z_printer.output(Constants.TICKET_TEMPLATE % (turn, num) )

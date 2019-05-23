@@ -13,12 +13,13 @@ class Router(object):
         app = self.appFlask
         printer = self.printer
 
-        @app.route('/print/<num>', methods=['POST'])
-        def print_ticket(num):
+        @app.route('/print/<turn>/<num>', methods=['POST'])
+        def print_ticket(turn,num):
 
-            printer.print_ticket(num)
+            printer.print_ticket(turn,num)
 
             return json.dumps({
+                'turn':turn,
                 'number': num,
                 'printed': True
             })
