@@ -23,6 +23,7 @@
 import os.path
 import sys
 import shlex
+import Constants
 
 
 if sys.platform.lower().startswith('win'):
@@ -50,7 +51,7 @@ class zebra(object):
        
         print(type(code))
         p = subprocess.Popen(['echo "'+ code +'" >Tiquet.txt'], shell=True)
-        p = subprocess.Popen(['cp Tiquet.txt /dev/usb/lp0'], shell=True)
+        p = subprocess.Popen(['cp Tiquet.txt /dev/usb/'+Constants.PRINTER_DEVICE_NAME], shell=True)
 
         p.communicate()
         #p.stdin.close()
